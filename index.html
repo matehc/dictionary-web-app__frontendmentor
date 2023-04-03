@@ -1,14 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+
+  <link rel="stylesheet" href="styles/styles.css">
+
+
   <title>Frontend Mentor | Dictionary web app</title>
 </head>
-<body>
 
+<body class="body-font">
+  <header>
+    <div class="wrapper header-container">
+
+
+
+      <div class="logo">
+        <img src="/assets/images/logo.svg" alt="dictionary logo">
+      </div>
+
+
+      <div class='dropdown'>
+        <div class='select'>
+          <p class="selected">Sans Serif</p>
+          <div class="arrow-icon-container">
+            <img class="arrow-icon" src="/assets/images/icon-arrow-down.svg" alt="">
+          </div>
+        </div>
+
+        <ul class="menu">
+          <li class="active">Sans Serif</li>
+          <li>Serif</li>
+          <li>Mono</li>
+        </ul>
+      </div>
+
+
+
+
+
+
+
+      <!-- SWITCH -->
+
+      <div class="switch-theme-icon-container">
+        <div>
+          <label class="switch switch--off">
+            <input type="checkbox" class="switch__input" />
+
+            <!-- Circle -->
+            <div class="switch__circle"></div>
+          </label>
+        </div class=theme-icon-box>
+        <img class="theme-icon" src="/assets/images/icon-moon.svg" alt="">
+      </div>
+    </div>
+
+
+
+    </div>
+
+  
+  </header>
+
+  <script src="/scripts/dropdown.js"></script>
+  <script src="/scripts/switch.js"></script>
 </body>
+
 </html>
