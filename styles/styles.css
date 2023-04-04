@@ -161,9 +161,33 @@ font-size: clamp(1.25rem, 0.2816901408450705rem + 4.131455399061033vw, 4rem);
     margin-left: auto;
 }
 
+@media (min-width: 37.5em){
+    .wrapper {
+        width: calc(100vw - 80px);
+    }
+}
+
+
+@media (min-width: 62.5em){
+    .wrapper {
+        /* width: calc(100vw - 80px); */
+        max-width: 736px;
+    }
+}
+
+
+
+
+
+/* 
+===========
+#HEADER
+===========
+*/
 
 .header-container {
     display: flex;
+    margin-block-start: 24px;
 }
 
 .switch-theme-icon-container {
@@ -182,10 +206,28 @@ font-size: clamp(1.25rem, 0.2816901408450705rem + 4.131455399061033vw, 4rem);
 .theme-icon-box {
     align-self: center;
 }
+
+@media (min-width: 32.5em) {
+    .logo {
+        width: 32px;
+        height: 36.5px;
+    }
+
+    .header-container {
+        margin-block-start: 60px;
+    }
+}
+
+@media (min-width: 62.5em) {
+    .header-container {
+        margin-block-start: 58px;
+    }
+}
+
 /* 
-=========
+----------
 #DROPDOWN
-=========
+----------
 */
 .dropdown, 
 .menu {
@@ -345,9 +387,38 @@ END OF SWITCH STYLE
     right: 16.45px;
 }
 
+@media (min-width: 37.5em) {
+    .input-section {
+        margin-block-start: 52px;
+    }
+
+    .word-input {
+        height: 64px;
+    }
+
+    .search-icon {
+        top: 24px;
+    }
+}
+
+
+
+
+/* 
+==============
+#WORD SECTION
+==============
+*/
+
 .word {
    margin-block-start: 23px;
    margin-block-end: 7px;
+}
+
+.word-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .transcript {
@@ -356,4 +427,24 @@ END OF SWITCH STYLE
 
 .audio-box {
     display: flex;
+    width: 48px;
+    margin-block-start: 23px;
+}
+
+
+@media (min-width: 37.5em){
+    .word {
+        font-size: 4rem;
+        margin-block-end: 5px;
+
+    }
+
+    .audio-box {
+        width: 75px;
+    }
+
+    .transcript{
+        /* make this dynamic later */
+        font-size: 24px;
+    }
 }
