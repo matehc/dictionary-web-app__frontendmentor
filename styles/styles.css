@@ -492,13 +492,18 @@ ul li::before {
     margin-left: -1em; 
 }
 
-li {
+li, p {
     font-size: 0.875rem;
 font-size: clamp(0.875rem, 0.7869718309859155rem + 0.3755868544600939vw, 1.125rem);
 }
 
 .meaning__item:not(:nth-last-of-type()) {
     margin-block-end: 13px;
+}
+
+.meaning__title, 
+.synonyms__title {
+    color: var(--text-color-2);
 }
 
 .synonyms {
@@ -551,3 +556,42 @@ font-size: clamp(0.875rem, 0.7869718309859155rem + 0.3755868544600939vw, 1.125re
 }
 
 
+.source-section {
+    margin-block-start: 32px;
+    padding-block-start: 24px;
+    border-top: 1px solid var(--ruler-1-color);
+}
+
+/* .source__title {
+    width: 100%;
+} */
+
+.source__link {
+    display: flex;
+    align-items: baseline;
+}
+
+.source__link a{
+   color: var(--text-color-1);
+}
+
+.source__title {
+    display: inline-block;
+    color: var(--text-color-2);
+    border-bottom: 1px solid var(--text-color-2);
+}
+
+.source {
+    margin-right: 15px;
+}
+
+
+@media (min-width: 37.5em) {
+    .source-section{
+        display: flex;
+    }
+
+    .source__title {
+        margin-right: 25px;
+    }
+}
