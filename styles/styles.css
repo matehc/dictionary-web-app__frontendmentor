@@ -448,3 +448,106 @@ END OF SWITCH STYLE
         font-size: 24px;
     }
 }
+
+
+/* 
+====================
+NOUN-MEANING SECTION
+====================
+*/
+
+.ruler__container {
+    display: flex;
+    align-items: center;
+    margin-block-start: 32px;
+    margin-block-end: 32px;
+}
+
+.noun-verb__heading {
+    font-size: 1.5rem;
+}
+
+.meaning__title {
+    margin-block-end: 17px;
+}
+
+hr {
+    outline: none;
+    flex: 1;
+    margin-left: 23px;
+    border: 1px solid var(--ruler-1-color);
+    
+}
+
+ul {
+    list-style: none;
+}
+
+ul li::before {
+    content: "\2022 ";  
+    color: var(--accent-color);
+    font-weight: bold; 
+    display: inline-block; 
+    width: 1em; 
+    margin-left: -1em; 
+}
+
+li {
+    font-size: 0.875rem;
+font-size: clamp(0.875rem, 0.7869718309859155rem + 0.3755868544600939vw, 1.125rem);
+}
+
+.meaning__item:not(:nth-last-of-type()) {
+    margin-block-end: 13px;
+}
+
+.synonyms {
+    display: flex;
+    margin-top: 24px;
+}
+
+.synonyms__words {
+    margin-left: 24px;
+    color: var(--accent-color);
+    font-weight: bold;
+
+}
+
+
+@media (min-width: 37.5em) {
+    .ruler__container {
+        margin-block-start: 42px;
+        margin-block-end: 43px;
+    }
+
+    .synonyms {
+        display: flex;
+        margin-top: 40px;
+    }
+    
+    .synonyms__words {
+        margin-left: 40px;
+    }
+
+    .meaning__title {
+        margin-block-end: 27px;
+    }
+    
+}
+
+
+
+
+@media (min-width: 62.5em) {
+    .ruler__container {
+        margin-block-start: 40px;
+        margin-block-end: 40px;
+    }
+
+    .meaning__title {
+        margin-block-end: 24px;
+    }
+    
+}
+
+
