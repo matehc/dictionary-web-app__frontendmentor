@@ -99,6 +99,9 @@ RESETS
     --shadow: #979797;
 
 
+    --moon-icon-color: #2d2d2d;
+
+
     /* FONT */
     --fs-heading-L-64: 4rem;
     --line-height-L-77: 77px;
@@ -137,6 +140,9 @@ body.dark {
     --error-color: #ff5252;
 
     --shadow:#a445ed;
+
+    --moon-icon-color: #a445ed;
+
 }
 
 .body-font {
@@ -150,8 +156,13 @@ body {
 }
 
 h1 {
+    color: var(--text-color-1);
     font-size: 1.25rem;
 font-size: clamp(1.25rem, 0.2816901408450705rem + 4.131455399061033vw, 4rem);
+}
+
+li {
+    color: var(--text-color-1);
 }
 
 
@@ -174,6 +185,7 @@ font-size: clamp(1.25rem, 0.2816901408450705rem + 4.131455399061033vw, 4rem);
         max-width: 736px;
     }
 }
+
 
 
 
@@ -203,9 +215,8 @@ font-size: clamp(1.25rem, 0.2816901408450705rem + 4.131455399061033vw, 4rem);
     margin-left: 12px;
 }
 
-.theme-icon-box {
-    align-self: center;
-}
+
+
 
 @media (min-width: 32.5em) {
     .logo {
@@ -231,45 +242,66 @@ font-size: clamp(1.25rem, 0.2816901408450705rem + 4.131455399061033vw, 4rem);
 */
 .dropdown, 
 .menu {
-    width: 96px;
+    /* width: 96px; */
+    width: 120px;
+
 }
 
 
 .dropdown {
+    display: flex;
+    color: var(--text-color-1);
     font-size: 0.875rem;
     position: relative;
     margin-left: auto;
     padding-right: 26px;
+    align-items: center;
     border-right: 1px solid var(--ruler-1-color);
   }
 
+
+  .select {
+    position: relative;
+    display:flex;
+     width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  .selected {
+    width: 120px;
+  }
+
+  .select > .arrow-icon-container {
+    margin-left: auto;
+  }
+
+
   .menu {
+    width: 183px;
     position: absolute;
+    top: 55px;
     right: 26px;
-    opacity: 0;
-    visibility: hidden;
-    /* display: block; */
+    display: none;
     padding: 24px;
     box-shadow: 0px 0px 30px var(--shadow);
     border-radius: 5px;
+    z-index: 10;
     transition: opacity .3s ease-in;
   }
 
   .menu > li {
     margin-block-end: 16px;
-    list-style-type: none;
+    text-decoration: none;
     cursor: pointer;
   }
 
   .menu > li:hover {
-    color: var(--accent-color)
+    color: var(--accent-color);
   }
+
+ 
   
-  .select {
-    display:flex;
-    align-items: center;
-    cursor: pointer;
-  }
 
   .arrow-icon-container {
     display: inline-block;
@@ -281,10 +313,15 @@ font-size: clamp(1.25rem, 0.2816901408450705rem + 4.131455399061033vw, 4rem);
   }
 
   .show {
-    visibility: visible;
-    /* opacity:1 */
-    /* display: block; */
+    display: block;
+    background-color: var(--main-bg-color);
   }
+
+ #hide {
+    display: none;
+  }
+
+ 
 
 
    .rotate { 
@@ -343,6 +380,8 @@ font-size: clamp(1.25rem, 0.2816901408450705rem + 4.131455399061033vw, 4rem);
     align-items: center;
     padding-left: 26px;
 }
+
+
 /* 
 ===================
 END OF SWITCH STYLE
@@ -369,6 +408,7 @@ END OF SWITCH STYLE
 }
 
 .word-input {
+    color: var(--text-color-1);
     width: 100%;
     height: 48px;
     border-radius: 16px;
@@ -385,6 +425,20 @@ END OF SWITCH STYLE
     position: absolute;
     top: 16px;
     right: 16.45px;
+    cursor: pointer;
+}
+
+.no-input{
+    display: none;
+    color: var(--error-color);
+}
+
+.no-input.show-msg {
+    display: block;
+}
+
+.word-input.input-error {
+    border: 1px solid var(--error-color);
 }
 
 @media (min-width: 37.5em) {
@@ -429,6 +483,7 @@ END OF SWITCH STYLE
     display: flex;
     width: 48px;
     margin-block-start: 23px;
+    cursor: pointer;
 }
 
 
@@ -436,7 +491,6 @@ END OF SWITCH STYLE
     .word {
         font-size: 4rem;
         margin-block-end: 5px;
-
     }
 
     .audio-box {
@@ -464,6 +518,7 @@ NOUN-MEANING SECTION
 }
 
 .noun-verb__heading {
+    color: var(--text-color-1);
     font-size: 1.5rem;
 }
 
@@ -483,7 +538,7 @@ ul {
     list-style: none;
 }
 
-ul li::before {
+.noun-meaning-section ul li::before{
     content: "\2022 ";  
     color: var(--accent-color);
     font-weight: bold; 
@@ -516,6 +571,10 @@ font-size: clamp(0.875rem, 0.7869718309859155rem + 0.3755868544600939vw, 1.125re
     color: var(--accent-color);
     font-weight: bold;
 
+}
+
+.definition-example {
+    color: var(--text-color-2);
 }
 
 
@@ -594,4 +653,30 @@ font-size: clamp(0.875rem, 0.7869718309859155rem + 0.3755868544600939vw, 1.125re
     .source__title {
         margin-right: 25px;
     }
+}
+
+
+/* 
+==================
+#NOT-FOUND SECTION
+==================
+*/
+
+.not-found-section {
+    margin-block-start: 132px;
+    text-align: center;
+}
+
+.not-found__msg {
+    margin-block-start: 44px;
+    margin-block-end: 24px;
+    font-weight: bold;
+}
+
+.not-found__info {
+    color: var(--text-color-2);
+}
+
+.emoji {
+    width: 64pxs;
 }
