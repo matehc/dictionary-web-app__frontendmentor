@@ -55,45 +55,38 @@
             <!-- Circle -->
             <div class="switch__circle"></div>
           </label>
-        </div class=theme-icon-box>
-        <img class="theme-icon" src="/assets/images/icon-moon.svg" alt="">
+        </div>
+        <div class=theme-icon-box>
+        <svg class="theme-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"><path fill="none" stroke="var(--moon-icon-color)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z"/></svg>
+        </div>
       </div>
     </div>
 
 
 
     </div>
-
-  
   </header>
 
   <main>
     <section class="wrapper input-section">
       <form action="">
         <div class="input-container">
+       <div>
         <input type="text" class="word-input">
+        <p class="no-input">Whoops, can’t be empty…</p>
+       </div>
+
           <img class="search-icon" src="/assets/images/icon-search.svg" alt="">
         </div>
       </form>
     </section>
 
-    <section class="wrapper word-section">
-      <div class="word-transcript__container">
-        <h1 class="word">Keyboard</h1>
-        <span class="transcript">/ˈkiːbɔːd/</span>
-      </div>
-
-      <div class="audio-box">
-        <img src="/assets/images/icon-play.svg" alt="">
-        <audio class="word__audio">
-          <source src="https://api.dictionaryapi.dev/media/pronunciations/en/hello-uk.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-    </section>
+   
   </main>
-
   <script src="/scripts/dropdown.js"></script>
   <script src="/scripts/switch.js"></script>
+  <script src="/scripts/dictionary.js"></script>
+  <script src="/scripts/audio.js"></script>
 </body>
 
 </html>
