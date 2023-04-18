@@ -112,48 +112,29 @@ injectWordDefinitionUI = (data) => {
   </section>
 
 
-${( data => nounDefinitionCreator(data) === " "? " " : `<section class="wrapper noun-meaning-section">
-<div class="ruler__container">
-  <h2 class="noun-verb__heading noun__heading">noun</h2>
-  <hr/>
-</div>
-
-<div class="meaning__container">
-  <p class="meaning__title">Meaning</p>
-  <ul class="meaning-list noun-meaning__list">
-    ${nounDefinitionCreator(data)}
-  </ul>
-</div>
-
-<div class="synonyms">
-  <p class="synonyms__title">synonyms</p>
-  <p class="synonyms__words">
-    ${getSynonyms(data)}
-  </p>
-</div>
-</section>`)(data)}
-
-
-  
-
-
-${(data => 
-  verbDefinitionCreator(data) === " " ? " ": ` <section class="wrapper noun-meaning-section">
+${( data => posDefinitionMaker(data) === " "? " " : posDefinitionMaker(data).map(data => `<section class="wrapper noun-meaning-section">
   <div class="ruler__container">
-    <h2 class="noun-verb__heading verb__heading">verb</h2>
+    <h2 class="noun-verb__heading noun__heading">${data.pos}</h2>
     <hr/>
   </div>
-
+  
   <div class="meaning__container">
     <p class="meaning__title">Meaning</p>
-    <ul class="meaning-list verb-meaning__list">
-      ${verbDefinitionCreator(data)}
+    <ul class="meaning-list noun-meaning__list">
+      ${data.definintionList}
     </ul>
   </div>
-</section>
-  `)(data)}
+  
+  <div class="synonyms">
+    <p class="synonyms__title">synonyms</p>
+    <p class="synonyms__words">
+      ${data.synonymList === "" ? "": data.synonymList}
+    </p>
+  </div>
+  </section>`).join(""))(data)}
 
- 
+
+
 
 
   <section class="wrapper source-section">
@@ -175,52 +156,62 @@ ${(data =>
   wordAudio();
 };
 
-nounDefinitionCreator = (data) => {
-  let nounList = "";
 
-  for (let i = 0; i < data.length; i++) {
-    for (let j = 0; j < data[i].meanings.length; j++) {
-      if (data[i].meanings[j].partOfSpeech !== "noun") continue;
-      console.log("meanings, ", data[i].meanings[j]);
-      nounList = data[i].meanings[j].definitions
-        .map((nounDefinition) => {
-          return `<li class="meaning__item verb-meaning__item">${
-            nounDefinition.definition
-          }<br><span class="definition-example">${nounDefinition.example ? nounDefinition.example : ""}</span></li>`;
-        })
-        .join("");
 
+
+
+
+
+posDefinitionMaker = (data) => {
+  let posDefinitionList = [];
+
+
+for (let i = 0; i < data.length; i++) {
+  for (let j = 0; j < data[i].meanings.length; j++) {
+    if(data[i].meanings[j].partOfSpeech.length > 0){
+      let partOfSpeechValue = data[i].meanings[j].partOfSpeech;
+    
+      let definition = definitionsHelper(data[i].meanings[j].definitions);
+      let synonym = synonymHelper(data[i].meanings[j].synonyms);
+     posDefinitionList.push({pos: partOfSpeechValue, synonymList:synonym, definintionList: definition})
+     
+    } else {
+      continue;
     }
   }
+}
+return posDefinitionList;
+}
 
-  return nounList.length > 0 ? nounList : " ";
-};
 
-/**
- * The verbDefinitionCreator loops throught the
- *
- *
- */
+
+
+function definitionsHelper(definitionsList){
+  let result = "";
+  definitionsList.forEach(definition => {
+    result += `<li class="meaning__item verb-meaning__item">${
+      definition.definition
+    }<br><span class="definition-example">${definition.example ? definition.example : ""}</span></li>`;
+  });
+
+  return result;
+
+}
+
+
 // DONE
-verbDefinitionCreator = (data) => {
-  let verbList = "";
-
-  for (let i = 0; i < data.length; i++) {
-    for (let j = 0; j < data[i].meanings.length; j++) {
-      if (data[i].meanings[j].partOfSpeech !== "verb") continue;
-      console.log("meanings, ", data[i].meanings[j]);
-      verbList = data[i].meanings[j].definitions
-        .map((verbDefinition) => {
-          return `<li class="meaning__item verb-meaning__item">${
-            verbDefinition.definition
-          }<br><span class="definition-example">${verbDefinition.example ? verbDefinition.example : ""}</span></li>`;
-        })
-        .join("");
-    }
+function synonymHelper(synonymsList){
+  let result = "";
+  if(synonymsList && synonymsList.length) {
+    synonymsList.forEach(synonym => {
+      if(synonym.length > 0){
+        result += synonym + " ";
+      }
+    });
   }
 
-  return verbList.length > 0 ? verbList : " ";
-};
+  return result.trim();
+}
 
 // DONE
 getPhoneticsAudio = (data) => {
@@ -242,6 +233,10 @@ getPhoneticsAudio = (data) => {
     }
   }
 };
+
+
+
+
 
 // DONE
 getPhoneticsText = (data) => {

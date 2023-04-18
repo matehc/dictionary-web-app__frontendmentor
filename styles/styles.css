@@ -122,6 +122,8 @@ RESETS
     --font-lora-serif-2: 'Lora', serif;
     --font-lora-monospace-3: 'Inconsolata', monospace;
 
+    --body-font-family: 'Inter', sans-serif;
+
     
 }
 
@@ -145,11 +147,29 @@ body.dark {
 
 }
 
-.body-font {
+
+
+
+.body-font__san-serif {
     font-family: var(--font-inter-sans-serif-1);
 }
 
+.body-font__serif {
+    font-family: var(--font-lora-serif-2);
+}
+
+.body-font__mono {
+    font-family: var(--font-lora-monospace-3);
+}
+
+.body__font-family {
+    font-family: var(--body-font-family);
+}
+
+
+
 body {
+    font-family: var(--font-inter-sans-serif-1);
     background-color: var(--main-bg-color);
     font-size: var(--fs-body-M);
     
