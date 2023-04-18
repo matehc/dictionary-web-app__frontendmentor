@@ -1,9 +1,16 @@
+const root = document.querySelector(':root');
 const select = document.querySelector('.select');
 const selected = document.querySelector('.selected');
 const arrow = document.querySelector('.arrow-icon')
 const menu = document.querySelector('.menu');
 const dropdown = document.querySelector('.dropdown');
 const fontOptions = document.querySelectorAll('.menu > li');
+// const body = document.querySelector("body");
+
+
+let rootStyles = getComputedStyle(root);
+
+
 
 
 let textFromSelectedFont;
@@ -18,7 +25,6 @@ select.addEventListener('click', ()=>{
 
 fontOptions.forEach(font => {
    font.classList.remove('active');
-
    fontOptions.forEach(font => {
     font.addEventListener('click', ()=>{
         font.classList.add('active');
