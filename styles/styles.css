@@ -118,11 +118,12 @@ RESETS
     --fs-body-S: 0.875rem;
     --body-line-height: 17px;
 
-    --font-inter-sans-serif-1: 'Inter', sans-serif;
-    --font-lora-serif-2: 'Lora', serif;
-    --font-lora-monospace-3: 'Inconsolata', monospace;
-
     --body-font-family: 'Inter', sans-serif;
+
+    --list-font-sans: 'Inter', sans-serif;
+    --list-font-serif: 'Lora',serif;
+    --list-font-mono: 'Inconsolata', mono;
+   
 
     
 }
@@ -150,30 +151,15 @@ body.dark {
 
 
 
-.body-font__san-serif {
-    font-family: var(--font-inter-sans-serif-1);
-}
 
-.body-font__serif {
-    font-family: var(--font-lora-serif-2);
-}
-
-.body-font__mono {
-    font-family: var(--font-lora-monospace-3);
-}
-
-.body__font-family {
+body.body-font {
     font-family: var(--body-font-family);
-}
-
-
-
-body {
-    font-family: var(--font-inter-sans-serif-1);
     background-color: var(--main-bg-color);
     font-size: var(--fs-body-M);
     
 }
+
+
 
 h1 {
     color: var(--text-color-1);
@@ -184,6 +170,25 @@ font-size: clamp(1.25rem, 0.2816901408450705rem + 4.131455399061033vw, 4rem);
 li {
     color: var(--text-color-1);
 }
+
+
+
+.list-font__san-serif {
+    font-family: var(--list-font-sans);
+}
+
+.list-font__serif {
+    font-family: var(--list-font-serif);
+}
+
+.list-font__mono {
+    font-family: var(--list-font-mono);
+} 
+
+
+/* .list-font {
+    font-family: var(--list);
+} */
 
 
 .wrapper {
@@ -201,7 +206,6 @@ li {
 
 @media (min-width: 62.5em){
     .wrapper {
-        /* width: calc(100vw - 80px); */
         max-width: 736px;
     }
 }
@@ -262,9 +266,7 @@ li {
 */
 .dropdown, 
 .menu {
-    /* width: 96px; */
     width: 120px;
-
 }
 
 

@@ -5,17 +5,13 @@ const arrow = document.querySelector('.arrow-icon')
 const menu = document.querySelector('.menu');
 const dropdown = document.querySelector('.dropdown');
 const fontOptions = document.querySelectorAll('.menu > li');
-// const body = document.querySelector("body");
+// const body = document.querySelector("body.body-font");
+
+document.querySelector('.menu > li:nth-child(1)').classList.add("list-font__san-serif");
+document.querySelector('.menu > li:nth-child(2)').classList.add("list-font__serif");
+document.querySelector('.menu > li:nth-child(3)').classList.add("list-font__mono");
 
 
-let rootStyles = getComputedStyle(root);
-
-
-
-
-let textFromSelectedFont;
-
-console.log(fontOptions)
 
 select.addEventListener('click', ()=>{
     menu.removeAttribute('id');
@@ -23,18 +19,21 @@ select.addEventListener('click', ()=>{
     arrow.classList.toggle('rotate');
 })
 
-fontOptions.forEach(font => {
-   font.classList.remove('active');
-   fontOptions.forEach(font => {
-    font.addEventListener('click', ()=>{
-        font.classList.add('active');
+fontOptions.forEach(fontOption => {
+   fontOption.classList.remove('active');
+    fontOption.addEventListener('click', ()=>{
+        let selectedFont = fontOption.getAttribute("data-body-font");
+        root.style.setProperty("--body-font-family",selectedFont);
+        fontOption.classList.add('active');
         menu.classList.toggle('show');
-        textFromSelectedFont = font.textContent;
+        textFromSelectedFont = fontOption.textContent;
         selected.textContent = textFromSelectedFont;
-    arrow.classList.toggle('rotate');
+        arrow.classList.toggle('rotate');
+
     })
-   })
-});
+})
+
+
 
 document.addEventListener('click', (e)=> {
     if(e.target.closest('.dropdown')){
