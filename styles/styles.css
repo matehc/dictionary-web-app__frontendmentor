@@ -350,6 +350,16 @@ li {
     transform: rotate(180deg);
   } 
 
+  @media (min-width: 37.5em){
+    .selected {
+        width: 140px;
+    }
+
+    .select {
+        width:  160px;
+    }
+  }
+
   /* 
   ====================
   END OF DROPDOWN STYLE
@@ -702,3 +712,43 @@ font-size: clamp(0.875rem, 0.7869718309859155rem + 0.3755868544600939vw, 1.125re
 .emoji {
     width: 64pxs;
 }
+
+
+
+/* 
+========
+LOADER
+========
+*/
+
+.spinner-container {
+    display: grid;
+    width: 100%;
+    place-content: center;
+    height: 50vh;
+
+}
+
+.spinner {
+    display: inherit;
+    /* Size */
+    height: 4rem;
+    width: 4rem;
+
+    /* Create a curve at the top */
+    border: 4px solid #d1d5db;
+    border-top-color: var(--accent-color);
+    border-radius: 50%;
+
+    animation: spinner 800ms linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
