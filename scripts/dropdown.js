@@ -5,7 +5,7 @@ const arrow = document.querySelector('.arrow-icon')
 const menu = document.querySelector('.menu');
 const dropdown = document.querySelector('.dropdown');
 const fontOptions = document.querySelectorAll('.menu > li');
-// const body = document.querySelector("body.body-font");
+
 
 document.querySelector('.menu > li:nth-child(1)').classList.add("list-font__san-serif");
 document.querySelector('.menu > li:nth-child(2)').classList.add("list-font__serif");

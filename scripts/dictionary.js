@@ -3,10 +3,13 @@ const inputSectionEl = document.querySelector(".input-section");
 const searchImg = document.querySelector(".search-icon");
 const errMsgEl = document.querySelector(".no-input");
 
+const spinner = document.querySelector('.spinner');
+spinner.style.display = "none";
+
+
 
 
 inputEl.addEventListener("keypress", (e) => {
- 
   try {
     if (e.key === 'Enter' && inputEl.value.trim() === '') {
       e.preventDefault();
@@ -27,7 +30,7 @@ inputEl.addEventListener("keypress", (e) => {
   }
 });
 
-
+// todo implement try catch
 searchImg.addEventListener("click", ()=> {
   let inputValue = inputEl.value;
   inputEl.value = "";
@@ -36,23 +39,33 @@ searchImg.addEventListener("click", ()=> {
 
 
 
-
-removeSection = () => {};
-
 getWordDef = async (word) => {
-
     try {
+      // move fetch under if above code doesn't work
+      document.querySelector('.spinner').style.display = "block";
       let res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
 
       let data = await res.json();
+      
+
+
+      document.querySelector('.spinner').style.display = "none";
+      injectWordDefinitionUI(data);
+      
+
+      // if(res.status === 200){
+       
+      // }
 
       if(res.status === 404){
         throw "404";
       }
 
-      injectWordDefinitionUI(data);
+
       
     } catch (error) {
+      spinner.style.display = "none";
+
       // console.log(error.status); 
       // if(error instanceof TypeError && error.message === "Failed to fetch"){
       //   console.log('network error')
@@ -61,11 +74,14 @@ getWordDef = async (word) => {
       //   console.log('word not found')
       //   injectErrorUI();
       // }
-
       if(error == 404){
         injectErrorUI();
       }
+
+      
     }
+
+    spinner.style.display = "none";
 };
 
 
@@ -88,16 +104,21 @@ injectErrorUI = () => {
  inputSectionEl.insertAdjacentHTML("afterend",errorUI );
 }
 
+
+
 injectWordDefinitionUI = (data) => {
   const existingWordSection = document.querySelectorAll(
     ".word-section, .audio-box, .noun-meaning-section, .source-section"
   );
+
   if (existingWordSection) {
     existingWordSection.forEach((el) => {
       el.remove();
     });
   }
-  let dictionaryBodyUI = ` <section class="wrapper word-section">
+  
+
+  let dictionaryBodyUI =  ` <section class="wrapper word-section">
     <div class="word-transcript__container">
       <h1 class="word">${data[0].word}</h1>
       <span class="transcript">${getPhoneticsText(data)}</span>
@@ -233,10 +254,6 @@ getPhoneticsAudio = (data) => {
     }
   }
 };
-
-
-
-
 
 // DONE
 getPhoneticsText = (data) => {
