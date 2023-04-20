@@ -90,7 +90,7 @@ getWordDef = async (word) => {
 
 injectErrorUI = () => {
   const existingWordSection = document.querySelectorAll(
-    ".word-section, .audio-box, .noun-meaning-section, .source-section"
+    ".word-section, .audio-box, .noun-meaning-section, .source-section, .not-found-section"
   );
   if (existingWordSection.length > 1) {
     existingWordSection.forEach((el) => {
@@ -111,7 +111,7 @@ injectErrorUI = () => {
 
 injectWordDefinitionUI = (data) => {
   const existingWordSection = document.querySelectorAll(
-    ".word-section, .audio-box, .noun-meaning-section, .source-section"
+    ".word-section, .audio-box, .noun-meaning-section, .source-section, .not-found-section"
   );
 
   if (existingWordSection) {
