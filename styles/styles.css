@@ -359,6 +359,19 @@ li {
    
   }
 
+
+  @media (min-width: 62.5em){
+    .select {
+        width: 100px;
+    }
+    .selected {
+        width: 180px;
+        font-size: 1.05rem;
+    }
+
+   
+  }
+
   /* 
   ====================
   END OF DROPDOWN STYLE
@@ -702,12 +715,14 @@ font-size: clamp(0.875rem, 0.7869718309859155rem + 0.3755868544600939vw, 1.125re
 ==================
 */
 
+
 .not-found-section {
     margin-block-start: 132px;
     text-align: center;
 }
 
 .not-found__msg {
+    color: var(--text-color-2);
     margin-block-start: 44px;
     margin-block-end: 24px;
     font-weight: bold;
@@ -718,7 +733,7 @@ font-size: clamp(0.875rem, 0.7869718309859155rem + 0.3755868544600939vw, 1.125re
 }
 
 .emoji {
-    width: 64px;
+    width: 100%;
 }
 
 
