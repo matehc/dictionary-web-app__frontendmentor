@@ -355,9 +355,9 @@ li {
         width: 140px;
     }
 
-    .select {
+    /* .select {
         width:  160px;
-    }
+    } */
   }
 
   /* 
@@ -710,7 +710,7 @@ font-size: clamp(0.875rem, 0.7869718309859155rem + 0.3755868544600939vw, 1.125re
 }
 
 .emoji {
-    width: 64pxs;
+    width: 64px;
 }
 
 
