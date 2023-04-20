@@ -30,53 +30,56 @@ inputEl.addEventListener("keypress", (e) => {
   }
 });
 
-// todo implement try catch
+
 searchImg.addEventListener("click", ()=> {
-  let inputValue = inputEl.value;
-  inputEl.value = "";
-  getWordDef(inputValue);
+  try {
+    if(inputEl.value.trim() === ''){
+      throw "no input";
+    }else{
+      errMsgEl.classList.remove('show-msg');
+      inputEl.classList.remove('input-error');
+      let inputValue = inputEl.value;
+      inputEl.value = "";
+      getWordDef(inputValue);
+    }
+   
+  } catch (error) {
+    if(error === "no input"){
+      errMsgEl.classList.add('show-msg');
+      inputEl.classList.add('input-error')
+    }
+  }
 });
 
 
 
 getWordDef = async (word) => {
     try {
-      // move fetch under if above code doesn't work
       document.querySelector('.spinner').style.display = "block";
       let res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
 
-      let data = await res.json();
-      
+      if(res.status == '404'){
+        throw "404";
+      }
 
+      let data = await res.json();
 
       document.querySelector('.spinner').style.display = "none";
       injectWordDefinitionUI(data);
       
 
-      // if(res.status === 200){
-       
-      // }
-
-      if(res.status === 404){
-        throw "404";
-      }
+     
+      
 
 
       
     } catch (error) {
       spinner.style.display = "none";
-
-      // console.log(error.status); 
-      // if(error instanceof TypeError && error.message === "Failed to fetch"){
-      //   console.log('network error')
-      //   injectErrorUI();
-      // } else if (res && res.status === 404) {
-      //   console.log('word not found')
-      //   injectErrorUI();
-      // }
       if(error == 404){
         injectErrorUI();
       }
+
+
 
 
     }
@@ -89,7 +92,7 @@ injectErrorUI = () => {
   const existingWordSection = document.querySelectorAll(
     ".word-section, .audio-box, .noun-meaning-section, .source-section"
   );
-  if (existingWordSection) {
+  if (existingWordSection.length > 1) {
     existingWordSection.forEach((el) => {
       el.remove();
     });
