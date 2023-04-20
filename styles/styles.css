@@ -439,6 +439,7 @@ END OF SWITCH STYLE
 }
 
 .word-input {
+    padding: 20px 24px;
     color: var(--text-color-1);
     width: 100%;
     height: 48px;
@@ -515,6 +516,14 @@ END OF SWITCH STYLE
     width: 48px;
     margin-block-start: 23px;
     cursor: pointer;
+}
+
+svg.audio__img:hover circle {
+    opacity: 1;
+}
+
+.audio__img:hover path {
+    fill: #fff;
 }
 
 

@@ -78,7 +78,7 @@ getWordDef = async (word) => {
         injectErrorUI();
       }
 
-      
+
     }
 
     spinner.style.display = "none";
@@ -125,7 +125,7 @@ injectWordDefinitionUI = (data) => {
     </div>
 
     <div class="audio-box">
-      <img class="audio__img" src="/assets/images/icon-play.svg" alt="">
+      <svg class="audio__img" xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75"><g fill="#A445ED" fill-rule="evenodd"><circle cx="37.5" cy="37.5" r="37.5" opacity=".25"/><path d="M29 27v21l21-10.5z"/></g></svg>
       <audio class="word__audio">
         <source src=${getPhoneticsAudio(data)}>
       </audio>
@@ -166,7 +166,7 @@ ${( data => posDefinitionMaker(data) === " "? " " : posDefinitionMaker(data).map
       </a>
       
       <a href=${data[0].sourceUrls[0]}>
-        <img src="/assets/images/icon-new-window.svg" alt="">
+        <img src="assets/images/icon-new-window.svg" alt="">
       </a>
     
     </div>
