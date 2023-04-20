@@ -343,21 +343,20 @@ li {
     display: none;
   }
 
- 
-
 
    .rotate { 
     transform: rotate(180deg);
   } 
 
   @media (min-width: 37.5em){
+    .select {
+        width: 95px;
+    }
     .selected {
-        width: 140px;
+        width: 160px;
     }
 
-    /* .select {
-        width:  160px;
-    } */
+   
   }
 
   /* 
